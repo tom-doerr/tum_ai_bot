@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import sys
 
 PROMPT_PREFIX = '''
 Info: "With over 100 active members, TUM.ai is Germany's leading AI student initiative, located in Munich. 🎓
