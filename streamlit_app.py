@@ -25,7 +25,7 @@ import configparser
 
 # CONFIG_DIR = os.getenv('XDG_CONFIG_HOME', os.path.expanduser('~/.config'))
 # API_KEYS_LOCATION = os.path.join(CONFIG_DIR, 'openaiapirc')
-API_KEYS_LOCATION = os.path.join(CONFIG_DIR, '.streamlit/secrets.toml')
+API_KEYS_LOCATION = os.path.join('', '.streamlit/secrets.toml')
 
 def create_template_ini_file():
     """
