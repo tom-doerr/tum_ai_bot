@@ -4,8 +4,7 @@ import sys
 
 PROMPT_PREFIX = '''
 Info: "With over 100 active members, TUM.ai is Germany's leading AI student initiative, located in Munich. 🎓
-
-Together with our highly talented members, we run projects with industry partners, workshops and so called "Makeathon" product development competitions all around the topic of Artificial Intelligence and Data Analytics. We thrive to deploy AI solutions into new fields and industries! Do not hesitate to reach out to us, we are looking forward to ambitious collaborations. "
+Together with our highly talented members, we run projects with industry partners, workshops and so called "Makeathon" product development competitions all around the topic of Artificial Intelligence and Data Analytics. We thrive to deploy AI solutions into new fields and industries! Do not hesitate to reach out to us, we are looking forward to ambitious collaborations. All information is in https://www.tum-ai.com"
 
 User: "What is it?"
 Bot: "TUM.ai is a student initiative located in Munich."
@@ -33,6 +32,10 @@ User: "How can I participate in Makeathon?
 Bot: "TUM.ai Makeathon is a two-day event where teams of four work on challenges provided by partner companies and develop MVP applications, as well as corresponding business concepts and pitches. If you want to participate, you can apply here: https://join-us.tum-ai.com/makeathon/"
 User: "How can I get more information about a department?"
 Bot: "You can visit our website (https://join-us.tum-ai.com/) to find more information about the departments."
+User: "What are TUM.ai events about?"
+Bot: "During the semester we partner with selected companies to form symbiotic relationships where our talented students work on real industry projects and provide consulting to push AI  solutions into new domains.  TUM.ai regularly hosts speaker events where our ambitious members, as well as interested followers, get the chance to learn from professional AI engineers, business specialists and various domain experts. At the beginning of every semester, we organize an AI Makeathon. In teams of four, participants work on challenges provided by partner companies and develop MVP  applications, as well as corresponding business concepts and pitches."
+User: "What are the values of TUM.ai?"
+Bot: "TUM.ai connects students and all relevant stakeholders to facilitate the application of AI across domains to drive positive social impact through interdisciplinary projects. Love for Education: We continuously strive to learn more and stay up to date with the latest trends and technologies surrounding AI. We embrace our diversity and collaborate together in cross-functional settings to exchange and acquire information in order to have a profound role in unfolding AI’s fullest potential in every domain. Trust and Transparency: We enable everyone to voice their opinions and invite open communication. We aim to support one another and work in harmony together as a whole to reach our goals. As a community, we respect and trust one another, knowing we can rely on each other's honesty. Offer students practical experience through projects with peers from the group. Action and Ambition: Setting objectives and moving forward is vital for us in everything we do. We continuously aim to improve and set the bar a little higher each time. We feel responsible and accountable for the delivery of an outcome, even when others are involved and have different roles to fulfill. Diversity and Inclusiveness: Our club consists of students from 20+ various majors who come from different parts of the world. We recognize and embrace the power of collaborative teams consisting of unique individuals which help us foster better decision making and the stimulation of new ideas."
 
 User: "'''
 
@@ -45,9 +48,7 @@ Bot: "'''
 # A: We have a membership fee of €2/month (24€ per year) for everyone.
 #
 # Q: Should I join the Venture or the Industry department?
-# A: If you want to join a department that is is mainly focused on bridging the gap between idea and building the next successful venture, you should join the Venture department. They are responsible for providing help in entrepreneurial activities for all members. If you want to join a department that is responsible for finding and developing relationships with industry partners and kick-off great industry phases, then you should join the Industry department.
-#
-#
+# A: If you want to join a department that is mainly focused on bridging the gap between idea and building the next successful venture, you should join the Venture department. They are responsible for providing help in entrepreneurial activities for all members. If you want to join a department that is responsible for finding and developing relationships with industry partners and kick-off great industry phases, then you should join the Industry department.
 #
 # Q:  What about the Marketing department?
 # A: The Marketing department is about promoting the vision and mission of TUM.ai, serve as the face of our community as well as coordinating and producing all materials representing TUM.ai. Additionally, we reach out to the community, customers, and aspiring members while creating an overarching image that represents our initiative in a professional way. This is all done with the help of our brand new and exciting corporate identity as well with a really nice team spirit! Our duties are maintaining and managing our social media channels, as well as working closely with our internal designers to create new and thrilling content within the context of AI and to make it available for all different kinds of people from all around the world.
@@ -61,17 +62,7 @@ Bot: "'''
 # Q: What skills are required for joining the  Finance and Legal department?
 # A: We are looking for law and accounting students or people with a high interest and knowledge in legal and accounting matters. Profound German language skills are a big plus, since most of the available resources are in German only.
 #
-# Q: What are the values of TUM.ai?
-# A: TUM.ai connects students and all relevant stakeholders to facilitate the application of AI across domains to drive positive social impact through interdisciplinary projects.
-# Love for Education: We continuously strive to learn more and stay up to date with the latest trends and technologies surrounding AI. We embrace our diversity and collaborate together in cross-functional settings to exchange and acquire information in order to have a profound role in unfolding AI’s fullest potential in every domain.
-# Trust and Transparency: We enable everyone to voice their opinions and invite open communication. We aim to support one another and work in harmony together as a whole to reach our goals. As a community, we respect and trust one another, knowing we can rely on each other's honesty. Offer students practical experience through projects with peers from the group.
-# Action and Ambition: Setting objectives and moving forward is vital for us in everything we do. We continuously aim to improve and set the bar a little higher each time. We feel responsible and accountable for the delivery of an outcome, even when others are involved and have different roles to fulfill.
-# Diversity and Inclusiveness: Our club consists of students from 20+ various majors who come from different parts of the world. We recognize and embrace the power of collaborative teams consisting of unique individuals which help us foster better decision making and the stimulation of new ideas.
-#
-# Q: What is TUM.ai about?
-# A: During the semester we partner with selected companies to form symbiotic relationships where our talented students work on real industry projects and provide consulting to push AI  solutions into new domains.  TUM.ai regularly hosts speaker events where our ambitious members, as well as interested followers, get the chance to learn from professional AI engineers, business specialists and various domain experts. At the beginning of every semester, we organize an AI Makeathon. In teams of four, participants work on challenges provided by partner companies and develop MVP  applications, as well as corresponding business concepts and pitches.
-#
-# Q: What is an exapmle event that TUM.ai held in the past?
+# Q: What is an example event that TUM.ai held in the past?
 # A: TUM.ai meets Early Bird VC (Uni-X): Recently, Earlybird raised their first UNI-X fund which is specialized in university spinoffs. The experienced VC  investors Michael Schmitt and Michael Hoeck joined us for an online workshop covering Earlybird's latest investment hypotheses in tech, their experience with AI startup teams, and which ideas they would love to see built by TUM.ai members in the future. It was on March 2022.
 #
 # Q: What about industry projects?
@@ -100,7 +91,14 @@ Bot: "'''
 #
 # Q: Which partners do you have?
 # A: We have partnerships with companies, other initiatives and institutions that create the basis for educating and inspiring our members and provide project opportunities. We have established collaborations with many well known companies (e.g. AppliedAI, Google, Microsoft ...) from different sectors and have implemented a strong partner sourcing force for our signature projects and the other departments.
-
+#
+# Started to shorthen the prompt texts of the departments:
+# User: "What about the Marketing department?"
+# Bot: "The Marketing department is about promoting the vision and mission of TUM.ai, serve as the face of our community as well as coordinating and producing all materials representing TUM.ai. Additionally, we reach out to the community, customers, and aspiring members while creating an overarching image that represents our initiative professionally."
+# User: "What about the Finance and Legal department?"
+# Bot: "The Finance & Legal department aims to support all departments of TUM.ai with legal and financial issues. Among others, this includes financial planning and accounting, ensuring TUM.ai’s non-profit status, data protection, contracts/invoices for partnerships, communication with all legal stakeholders and answering the inquiries of the other departments."
+# User: "What about the Education department?"
+# Bot: "The education department’s goal is to equip everyone with the AI knowledge to pro-actively contribute in an AI project (e.g E-Labs or Industry Phase). To do this we are preparing an overview of state of the art applications and models of deep learning in NLP, Speech and CV."
 
 import requests
 import openai
@@ -145,7 +143,7 @@ if int(MODEL[-3:]) >= 2:
 else:
     suffix = None
 
-response = openai.Completion.create(engine=MODEL, prompt=prompt, suffix=suffix, temperature=0.7, stream=True, stop='User: "', max_tokens=200)
+response = openai.Completion.create(engine=MODEL, prompt=prompt, suffix=suffix, temperature=0.5, stream=True, stop='User: "', max_tokens=250)
 
 completion_all = ''
 response_text_field = st.empty()
