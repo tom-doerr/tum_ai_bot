@@ -65,7 +65,7 @@ def get_num_prompts_last_x_min(mins):
 
 
 MINUTES_TO_CONSIDER = 10
-MAX_REQUESTS_PER_MINUTE = 2
+MAX_REQUESTS_PER_MINUTE = 5
 
 num_prompts_last_x_min = get_num_prompts_last_x_min(MINUTES_TO_CONSIDER)
 
@@ -77,9 +77,6 @@ if num_prompts_last_x_min >= MAX_REQUESTS_PER_MINUTE:
 
 
 
-
-
-
 def initialize_openai_api():
     """
     Initialize the OpenAI API
@@ -87,8 +84,6 @@ def initialize_openai_api():
 
     openai.organization_id = st.secrets['organization_id']
     openai.api_key = st.secrets['secret_key']
-
-
 
 
 st.title('TUM.ai Chatbot')
