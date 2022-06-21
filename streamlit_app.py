@@ -185,7 +185,7 @@ SUFFIX = '''"
 User: "Thank you so much, that answered my question!"'''
 
 # MODEL = 'text-davinci-002'
-MODEL = 'text-ada-001'
+MODEL = 'text-curie-001'
 
 if int(MODEL[-3:]) >= 2:
     suffix = SUFFIX
