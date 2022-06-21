@@ -180,6 +180,7 @@ if not user_input:
 log_prompt(user_input)
 
 prompt = PROMPT_PREFIX + user_input + PROMPT_POSTFIX
+print("user_input:", user_input)
 
 SUFFIX = '''"
 User: "Thank you so much, that answered my question!"'''
