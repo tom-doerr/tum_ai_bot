@@ -206,10 +206,12 @@ while True:
             completion_all = completion_all.strip()[:-1]
 
     completion_all += completion
-    print("completion_all:", completion_all)
+    # print("completion_all:", completion_all)
     # response_text_field.text(completion_all)
     response_text_field.markdown(completion_all)
     if next_response['choices'][0]['finish_reason']:
         break
+
+print("completion_all:", completion_all)
 
 
