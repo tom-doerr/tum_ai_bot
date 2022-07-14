@@ -118,11 +118,11 @@ if (('log' in st.experimental_get_query_params())  and st.experimental_get_query
     try:
         st.write(f'{PROMPTS_LOG_CSV}:')
         with open(PROMPTS_LOG_CSV, 'r') as f:
-            st.write(f.read())
+            st.code(f.read())
 
         st.write(f'{RESPONSES_LOG_CSV}:')
         with open(RESPONSES_LOG_CSV, 'r') as f:
-            st.write(f.read())
+            st.code(f.read())
     except FileNotFoundError:
         st.write('No log found')
 
