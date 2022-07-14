@@ -110,9 +110,24 @@ import configparser
 # CONFIG_DIR = os.getenv('XDG_CONFIG_HOME', os.path.expanduser('~/.config'))
 # API_KEYS_LOCATION = os.path.join(CONFIG_DIR, 'openaiapirc')
 
-
-
 PROMPTS_LOG_CSV = 'propmts.csv'
+RESPONSES_LOG_CSV = 'responses.csv'
+
+if (('log' in st.experimental_get_query_params())  and st.experimental_get_query_params()['log'][0] == 'true'):
+    st.title('Showing log')
+    try:
+        st.write(f'{PROMPTS_LOG_CSV}:')
+        with open(PROMPTS_LOG_CSV, 'r') as f:
+            st.write(f.read())
+
+        st.write(f'{RESPONSES_LOG_CSV}:')
+        with open(RESPONSES_LOG_CSV, 'r') as f:
+            st.write(f.read())
+    except FileNotFoundError:
+        st.write('No log found')
+
+
+
 
 def write_page_load_stats():
     with open(LOG_FILE_LOAD_STATS, 'a') as f:
@@ -122,6 +137,10 @@ def write_page_load_stats():
 def log_prompt(prompt):
     with open(PROMPTS_LOG_CSV, 'a') as f:
         f.write(f'{time.time()},{prompt}\n')
+
+def log_response(response):
+    with open(RESPONSES_LOG_CSV, 'a') as f:
+        f.write(f'{time.time()},{response}\n')
 
 
 def load_prompts_with_times():
@@ -213,5 +232,7 @@ while True:
         break
 
 print("completion_all:", completion_all)
+
+log_response(completion_all)
 
 
