@@ -167,7 +167,7 @@ def get_num_prompts_last_x_min(mins):
 
 
 MINUTES_TO_CONSIDER = 60
-MAX_REQUESTS_PER_MINUTE = 60
+MAX_REQUESTS_PER_MINUTE = 120
 
 num_prompts_last_x_min = get_num_prompts_last_x_min(MINUTES_TO_CONSIDER)
 
