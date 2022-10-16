@@ -2,6 +2,7 @@ import streamlit as st
 import os
 import sys
 import time
+import math
 
 PROMPT_PREFIX = '''
 Info: "With over 100 active members, TUM.ai is Germany's leading AI student initiative, located in Munich. 🎓
@@ -112,6 +113,12 @@ import configparser
 
 PROMPTS_LOG_CSV = 'propmts.csv'
 RESPONSES_LOG_CSV = 'responses.csv'
+CHARACTERS_TOKEN_RATIO_ESTIMATE = 4.66
+PROMPT_FILE = 'prompt.txt'
+with open(PROMPT_FILE, 'r') as f:
+    PROMPT_PREFIX = f.read()
+
+
 
 if (('log' in st.experimental_get_query_params())  and st.experimental_get_query_params()['log'][0] == 'true'):
     st.title('Showing log')
@@ -127,6 +134,32 @@ if (('log' in st.experimental_get_query_params())  and st.experimental_get_query
         st.write('No log found')
 
 
+def get_roughly_n_tokens_section(text, n_tokens):
+    text_split_empty_lines = text.split('\n\n')
+    num_target_chars = n_tokens * CHARACTERS_TOKEN_RATIO_ESTIMATE
+    line_num_last_added = 0
+    section_texts = []
+    while True:
+        out_text = ''
+        # for i, line in enumerate(text_split_empty_lines[i:]):
+        for i in range(line_num_last_added + 1, len(text_split_empty_lines)):
+            print("i:", i)
+            line = text_split_empty_lines[i]
+            if len(out_text) + len(line) > num_target_chars:
+                break
+
+            if i >= len(text_split_empty_lines) - 1:
+                break
+
+            out_text += line + '\n\n'
+            line_num_last_added = i
+
+        if i >= len(text_split_empty_lines) - 1:
+            break
+
+        section_texts.append(out_text)
+
+    return section_texts
 
 
 def write_page_load_stats():
@@ -167,12 +200,12 @@ def get_num_prompts_last_x_min(mins):
 
 
 MINUTES_TO_CONSIDER = 60
-MAX_REQUESTS_PER_MINUTE = 120
+MAX_REQUESTS_PER_MINUTE = 12
 
 num_prompts_last_x_min = get_num_prompts_last_x_min(MINUTES_TO_CONSIDER)
 
 print("num_prompts_last_x_min:", num_prompts_last_x_min)
-if num_prompts_last_x_min >= MAX_REQUESTS_PER_MINUTE:
+if num_prompts_last_x_min >= MAX_REQUESTS_PER_MINUTE * MINUTES_TO_CONSIDER:
     st.info('Hit the rate limit, please try again in a few minutes.')
     st.stop()
 
@@ -197,8 +230,11 @@ if not user_input:
     st.stop()
 
 log_prompt(user_input)
+print('creating sections ...')
+sections = get_roughly_n_tokens_section(PROMPT_PREFIX, 1000)
+print('sections created')
+print("sections:", sections)
 
-prompt = PROMPT_PREFIX + user_input + PROMPT_POSTFIX
 print("user_input:", user_input)
 
 SUFFIX = '''"
@@ -212,27 +248,41 @@ if int(MODEL[-3:]) >= 2:
 else:
     suffix = None
 
-response = openai.Completion.create(engine=MODEL, prompt=prompt, suffix=suffix, temperature=0.5, stream=True, stop='User: "', max_tokens=250)
+with st.spinner('Thinking about possible answers...'):
+    columns = st.columns(len(sections))
+    for section_num, section in enumerate(sections):
+        prompt_prefix = section
+        prompt = prompt_prefix + user_input + PROMPT_POSTFIX
+        response = openai.Completion.create(engine=MODEL, prompt=prompt, suffix=suffix, temperature=0.5, stream=True, stop='User: "', max_tokens=250, logprobs=1)
 
-completion_all = ''
-response_text_field = st.empty()
+        completion_all = ''
+        logprob_values = []
 
-while True:
-    next_response = next(response)
-    completion = next_response['choices'][0]['text']
-    if next_response['choices'][0]['finish_reason']:
-        if completion_all[-1] == '"':
-            completion_all = completion_all.strip()[:-1]
 
-    completion_all += completion
-    # print("completion_all:", completion_all)
-    # response_text_field.text(completion_all)
-    response_text_field.markdown(completion_all)
-    if next_response['choices'][0]['finish_reason']:
-        break
+        with columns[section_num]:
+            response_text_field = st.empty()
+            while True:
+                next_response = next(response)
+                print("next_response:", next_response)
+                completion = next_response['choices'][0]['text']
+                logprob_values.append(next_response['choices'][0]['logprobs']['token_logprobs'][0])
+                if next_response['choices'][0]['finish_reason']:
+                    if completion_all[-1] == '"':
+                        completion_all = completion_all.strip()[:-1]
 
-print("completion_all:", completion_all)
+                completion_all += completion
+                # print("completion_all:", completion_all)
+                # response_text_field.text(completion_all)
+                response_text_field.markdown(completion_all)
+                if next_response['choices'][0]['finish_reason']:
+                    break
 
-log_response(completion_all)
+            print("completion_all:", completion_all)
+            logprob_avg = sum(logprob_values) / len(logprob_values)
+            # st.write(f'Average logprob: {logprob_avg}')
+            # st.write(f'Certainty: {math.exp(logprob_avg)}')
+            response_text_field.markdown(completion_all + f'\n\nCertainty: {math.exp(logprob_avg)}')
+
+        log_response(completion_all)
 
 
