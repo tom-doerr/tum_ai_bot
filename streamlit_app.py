@@ -223,11 +223,11 @@ def initialize_openai_api():
 
     openai.organization_id = st.secrets['organization_id']
     openai.api_key = st.secrets['secret_key']
-    
+
 
 # added header with question and logprob
 # "Hi, how can I help you today? + logo"
-st.image('chatbot_logo.png')
+st.image('header_logo.png')
 
 initialize_openai_api()
 user_input = st.text_input("", "")
