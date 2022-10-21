@@ -226,10 +226,10 @@ def initialize_openai_api():
 
 
 
-title_col1, title_col2, title_col3 = st.columns([1,0.2])
+title_col1, title_col2 = st.columns([1,0.2])
 with title_col1:
     st.title('Hi, how can I help you?')
-with title_col3:
+with title_col2:
     st.image('chatbot_logo.png')
 
 initialize_openai_api()
