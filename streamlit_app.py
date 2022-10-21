@@ -228,9 +228,10 @@ def initialize_openai_api():
 # added header with question and logprob
 # "Hi, how can I help you today? + logo"
 st.image('header_logo.png')
+st.text("(this bot is AI-based, we do NOT guarantee for the correctness of its answers!)")
 
 initialize_openai_api()
-user_input = st.text_input("", "")
+user_input = st.text_input("Please enter your question here", "")
 
 if not user_input:
     st.stop()
