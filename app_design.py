@@ -6,7 +6,7 @@ def apply_design():
     st.set_page_config(page_title="TUM.ai ChatBot")
 
     # Design move app further up and remove top padding
-    st.markdown('''<style>.css-1egvi7u {margin-top: -12rem;}</style>''',
+    st.markdown('''<style>.css-1wrcr25 {margin-top: -11rem;}</style>''',
         unsafe_allow_html=True)
 
     # Design change hyperlink href link color
