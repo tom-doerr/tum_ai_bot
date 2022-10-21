@@ -9,6 +9,10 @@ def apply_design():
     st.markdown('''<style>.css-1wrcr25 {margin-top: -11rem;}</style>''',
         unsafe_allow_html=True)
 
+    # Design change streamlit logo bade color
+    st.markdown('''<style>.viewerBadge_link__1S137 {--bg-opacity: 0;}</style>''',
+        unsafe_allow_html=True)
+
     # Design change hyperlink href link color
     st.markdown('''<style>.css-1offfwp a {color: #660cf3;}</style>''',
         unsafe_allow_html=True)  # lightmode
