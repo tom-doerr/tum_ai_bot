@@ -3,10 +3,10 @@ import streamlit as st
 def apply_design():
 
     # Design implement changes to the standard streamlit UI/UX
-    st.set_page_config(page_title="RB Company Analytics", page_icon="img/rb_logo.png")
+    st.set_page_config(page_title="TUM.ai ChatBot")
 
     # Design move app further up and remove top padding
-    st.markdown('''<style>.css-1egvi7u {margin-top: -8rem;}</style>''',
+    st.markdown('''<style>.css-1egvi7u {margin-top: -12rem;}</style>''',
         unsafe_allow_html=True)
 
     # Design change hyperlink href link color
