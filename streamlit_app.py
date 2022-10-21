@@ -228,7 +228,7 @@ def initialize_openai_api():
 # added header with question and logprob
 # "Hi, how can I help you today? + logo"
 st.image('header_logo.png')
-st.write("(this bot is AI-based, we do NOT guarantee for the correctness of its answers)")
+st.write("This bot is AI-based, we do NOT guarantee for the correctness of its answers - your TUM.ai DEV team")
 
 initialize_openai_api()
 user_input = st.text_input("Please enter your question here", "")
