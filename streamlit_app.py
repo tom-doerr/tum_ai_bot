@@ -5,7 +5,7 @@ import time
 import math
 
 import app_design
-# apply design changes 
+# apply design changes
 app_design.apply_design()
 
 PROMPT_PREFIX = '''
@@ -225,7 +225,12 @@ def initialize_openai_api():
     openai.api_key = st.secrets['secret_key']
 
 
-st.title('TUM.ai Chatbot')
+
+title_col1, title_col1, title_col1 = st.columns([1,0.1,0.4])
+with title_col1:
+    st.title('Hi, how can I help you?')
+with title_col3:
+    st.image('chatbot_logo.png')
 
 initialize_openai_api()
 user_input = st.text_input("", "")
