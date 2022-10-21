@@ -64,55 +64,29 @@ Bot: “If you want to join a department that is mainly focused on bridging the 
 User:  “What is the job of the Marketing department?”
 Bot: “The Marketing department is about promoting the vision and mission of TUM.ai, serve as the face of our community as well as coordinating and producing all materials representing TUM.ai. Additionally, we reach out to the community, customers, and aspiring members while creating an overarching image that represents our initiative professionally. This is all done with the help of our brand new and exciting corporate identity as well with a really nice team spirit! Our duties are maintaining and managing our social media channels, as well as working closely with our internal designers to create new and thrilling content within the context of AI and to make it available for all different kinds of people from all around the world.”
 
-User: “What skills are required for joining the Marketing Department?”
-Bot: “We are looking for motivated people eager to explore the world of marketing: design skills & marketing knowledge, social media interest, research interest, writing skills, and social skills. Streaming, photography and/or design skills would be a great asset.”
-
 User:  “What is the job of the Finance and Legal department?”
 Bot: “The Finance & Legal department aims to support all departments of TUM.ai with legal and financial issues. Among others, this includes financial planning and accounting, ensuring TUM.ai’s non-profit status, data protection, contracts/invoices for partnerships, communication with all legal stakeholders and answering the inquiries of the other departments. In 2021, we successfully implemented all finance-related processes and were able to provide the final annual statement. We aim to increase the legal knowledge, so our department can act more independently of our lawyers and tax consultants.”
-
-User: “What skills are required for joining the Finance and Legal department?”
-Bot: “We are looking for people who like to have the big-picture and are interested in legal and/or finance. If you are interested, but think you don’t have enough prior knowledge, don’t worry, because this is the place to learn!”
 
 User: “What is the job of the Community department?”
 Bot: “The Community department is responsible for enhancing the community spirit within TUM.ai and keeping our members happy. We are organizing and hosting fun community events, like the Christmas party, the Stammtisch, bowling sessions, or the Get-Active Day. Thereby, we want to connect the TUM.ai members with each other. Since 2021, this also spans beyond TUM.ai as we are now part of the Entrepreneur network, which gives us the chance to also interact more with other student initiatives in Munich. Also, we are aiming at getting the best people onboard TUM.ai during each semester's recruiting phase. In the upcoming time, we would like to refine the onboarding process for our new joiners to make them feel connected to the community after their first month with TUM.ai.”
 
-User: “What skills are required for joining the Community Department?”
-Bot: “There are no specific skills or requirements. We are looking for motivated people who like to connect with people and enjoy organizing and hosting social events. We always need people to plan and organize the recruiting process and conduct interviews. ”
-
 User: "What is the job of the Education department?"
 Bot: "The education department’s goal is to equip everyone with the AI knowledge to proactively contribute in an AI project (e.g. E-Labs or Industry Phase). To do this we are preparing an overview of state-of-the-art applications and models of deep learning in NLP, Speech and CV. This is done in a series of hands-on technical workshops we call AI Academy."
-
-User: “What skills are required for joining the Education Department?”
-Bot: “We look for members, who want to give presentations and workshops for our educational events (experience as a tutor would be great). We also encourage people with a business background to join the department. Being a quick learner is very advantageous.”
 
 User: “What is the job of the Partners and Sponsors department?”
 Bot: “The Partners & Sponsors department establishes partnerships with companies, other initiatives and institutions that create the basis for educating and inspiring our members and provide project opportunities. We are the first touchpoint of companies that want to cooperate with TUM.ai and convert them as partners. We have established collaborations with many well known companies from different sectors and have implemented a strong partner sourcing force for our signature projects and the other departments.”
 
-User: “What skills are required for joining the Partners and Sponsors Department?”
-Bot: “We are looking for intrinsically motivated people with high self-confidence and a proactive working manner interested in boosting their sales skills. A willingness to cold-call potential partners is highly appreciated.”
-
 User: "What is the job of the Software Development department?"
 Bot: "Our team is responsible for the implementation and management of in-house software development projects and products. Additionally, we manage the Cloud and deployment of such systems and provide services and support to members."
-User: “What skills are required for joining the Software Development Department?”
-Bot: “We are looking for creative and curious tech-people, who are interested in learning and implementing Front- and Backend technologies. There are no specific skills required, as long as you are willing to learn and apply yourself!.”
 
 User: “What is the job of the Makeathon department?”
 Bot: “The Makeathon department aims to organise the Makeathon, a 48-hour challenge where participants from all backgrounds work on a real-world business cases involving AI. Our goal is to raise awareness about possible AI applications, provide AI access and knowledge to non-techies and create the starting point for AI startups. Participants work in interdisciplinary teams and have a chance to show their expertise in AI, business modelling or specific domain, but also to learn from workshops and business talks held by industry and research partners.”
 
-User: “What skills are required for joining the Makeathon Department?”
-Bot: “We don’t require specific skills. Nice to have are an AI background, business or marketing experience and organizational talent. We need excellent teamwork and communication skills and proactive/positive work ethics. The tasks are diverse and can be switched.”
-
 User: “What is the job of the Industry department?”
 Bot: “We organize projects with partners from the industry where a small team rapidly develops a solution using cutting-edge AI technology with a huge degree of freedom. We provide a full cycle of services — from consulting and conception of the project to team sourcing, implementation and handover.”
 
-User: “What skills are required for joining the Industry Department?”
-Bot: “People who are interested in AI consulting, elevator pitches, sales, marketing and recruitment. If you have contacts at corporates that need to have AI solutions implemented, that would help us immensely. Overall, we welcome anyone who is interested to see the real-world application of AI.”
-
 User: “What is the job of the Venture department?”
 Bot: “The Venture department is mainly focused on bridging the gap between idea and building the next successful venture. We are responsible for providing help in entrepreneurial activities for all members. Our main project is to build the AI Entrepreneurship Lab, the first AI accelerator program for students. After building the concept in the last months, we are now going full steam ahead to bring the vision to life.”
-
-User: “What skills are required for joining the Venture Department?”
-Bot: “We value the proactivity and responsibility of our members more than anything. We are looking for people who have ideas on how to shape the journey of TUM.ai in the startup world. All Venture team members will somehow be involved in organizing the AI Entrepreneurship Lab but we have a lot of other opportunities as well.”
 
 User: “What is an example event that TUM.ai held in the past?”
 Bot: “TUM.ai meets Early Bird VC (Uni-X): Recently, Earlybird raised their first UNI-X fund, which is specialized in university spinoffs. The experienced VC investors Michael Schmitt and Michael Hoeck joined us for an online workshop covering Earlybird's latest investment hypotheses in tech, their experience with AI startup teams, and which ideas they would love to see built by TUM.ai members in the future. It was on March 2022.”
@@ -125,5 +99,32 @@ Bot: “You have to apply to TUM.ai in the next application phase (around Octobe
 
 User: “Which partners do TUM.ai have?”
 Bot: “We have partnerships with companies, other initiatives and institutions that create the basis for educating and inspiring our members and provide project opportunities. We have established collaborations with many well known companies (e.g. AppliedAI, Google, Microsoft, UnternehmerTUM, Deloitte, etc.) from different sectors and have implemented a strong partner sourcing force for our signature projects and the other departments.”
+
+User: “What skills are required for joining the Marketing Department?”
+Bot: “We are looking for motivated people eager to explore the world of marketing: design skills & marketing knowledge, social media interest, research interest, writing skills, and social skills. Streaming, photography and/or design skills would be a great asset.”
+
+User: “What skills are required for joining the Venture Department?”
+Bot: “We value the proactivity and responsibility of our members more than anything. We are looking for people who have ideas on how to shape the journey of TUM.ai in the startup world. All Venture team members will somehow be involved in organizing the AI Entrepreneurship Lab but we have a lot of other opportunities as well.”
+
+User: “What skills are required for joining the Industry Department?”
+Bot: “People who are interested in AI consulting, elevator pitches, sales, marketing and recruitment. If you have contacts at corporates that need to have AI solutions implemented, that would help us immensely. Overall, we welcome anyone who is interested to see the real-world application of AI.”
+
+User: “What skills are required for joining the Makeathon Department?”
+Bot: “We don’t require specific skills. Nice to have are an AI background, business or marketing experience and organizational talent. We need excellent teamwork and communication skills and proactive/positive work ethics. The tasks are diverse and can be switched.”
+
+User: “What skills are required for joining the Software Development Department?”
+Bot: “We are looking for creative and curious tech-people, who are interested in learning and implementing Front- and Backend technologies. There are no specific skills required, as long as you are willing to learn and apply yourself!.”
+
+User: “What skills are required for joining the Partners and Sponsors Department?”
+Bot: “We are looking for intrinsically motivated people with high self-confidence and a proactive working manner interested in boosting their sales skills. A willingness to cold-call potential partners is highly appreciated.”
+
+User: “What skills are required for joining the Education Department?”
+Bot: “We look for members, who want to give presentations and workshops for our educational events (experience as a tutor would be great). We also encourage people with a business background to join the department. Being a quick learner is very advantageous.”
+
+User: “What skills are required for joining the Community Department?”
+Bot: “There are no specific skills or requirements. We are looking for motivated people who like to connect with people and enjoy organizing and hosting social events. We always need people to plan and organize the recruiting process and conduct interviews. ”
+
+User: “What skills are required for joining the Finance and Legal department?”
+Bot: “We are looking for people who like to have the big-picture and are interested in legal and/or finance. If you are interested, but think you don’t have enough prior knowledge, don’t worry, because this is the place to learn!”
 
 User:
