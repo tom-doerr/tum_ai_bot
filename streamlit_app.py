@@ -230,7 +230,7 @@ title_col1, title_col2 = st.columns([1,0.2])
 with title_col1:
     st.title('Hi, how can I help you?')
 with title_col2:
-    st.image('chatbot_logo.png')
+    st.image('chatbot_logo.png', width=70)
 
 initialize_openai_api()
 user_input = st.text_input("", "")
