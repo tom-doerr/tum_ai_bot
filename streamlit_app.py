@@ -171,7 +171,7 @@ with st.spinner('Thinking about possible answers...'):
     for section_num, section in enumerate(sections):
         prompt_prefix = section
         prompt = prompt_prefix + user_input + PROMPT_POSTFIX
-        response = openai.Completion.create(engine=MODEL, prompt=prompt, suffix=suffix, temperature=0.35, stream=True, stop='User: "', max_tokens=200, logprobs=1)
+        response = openai.Completion.create(engine=MODEL, prompt=prompt, suffix=suffix, temperature=0.35, stream=True, stop='User: "', max_tokens=250, logprobs=1)
 
         completion_all = ''
         logprob_values = []
