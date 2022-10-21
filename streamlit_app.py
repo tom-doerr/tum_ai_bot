@@ -4,6 +4,10 @@ import sys
 import time
 import math
 
+import app_design
+# apply design changes 
+app_design.apply_design()
+
 PROMPT_PREFIX = '''
 Info: "With over 100 active members, TUM.ai is Germany's leading AI student initiative, located in Munich. 🎓
 Together with our highly talented members, we run projects with industry partners, workshops and so called "Makeathon" product development competitions all around the topic of Artificial Intelligence and Data Analytics. We thrive to deploy AI solutions into new fields and industries! Do not hesitate to reach out to us, we are looking forward to ambitious collaborations. All information is in https://www.tum-ai.com"
@@ -284,5 +288,3 @@ with st.spinner('Thinking about possible answers...'):
             response_text_field.markdown(completion_all + f'\n\nCertainty: {math.exp(logprob_avg)}')
 
         log_response(completion_all)
-
-
