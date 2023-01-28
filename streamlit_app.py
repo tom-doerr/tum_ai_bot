@@ -54,6 +54,7 @@ def get_roughly_n_tokens_section(text, n_tokens):
     num_target_chars = n_tokens * CHARACTERS_TOKEN_RATIO_ESTIMATE
     line_num_last_added = 0
     section_texts = []
+
     while True:
         out_text = ''
         # for i, line in enumerate(text_split_empty_lines[i:]):
@@ -69,10 +70,9 @@ def get_roughly_n_tokens_section(text, n_tokens):
             out_text += line + '\n\n'
             line_num_last_added = i
 
+        section_texts.append(out_text)
         if i >= len(text_split_empty_lines) - 1:
             break
-
-        section_texts.append(out_text)
 
     return section_texts
 
@@ -124,13 +124,15 @@ if num_prompts_last_x_min >= MAX_REQUESTS_PER_MINUTE * MINUTES_TO_CONSIDER:
     st.info('Hit the rate limit, please try again in a few minutes.')
     st.stop()
 
-
-
+# from dotenv import load_dotenv
+# load_dotenv()
 
 def initialize_openai_api():
     """
     Initialize the OpenAI API
     """
+    # openai.api_key = os.environ["SECRET_KEY"]
+    # openai.organization_id = os.environ["ORGANIZATION_ID"]
 
     openai.organization_id = st.secrets['organization_id']
     openai.api_key = st.secrets['secret_key']
@@ -139,7 +141,7 @@ def initialize_openai_api():
 # added header with question and logprob
 # "Hi, how can I help you today? + logo"
 st.image('header_logo.png')
-st.write("This bot is AI-based, we do NOT guarantee for the correctness of its answers - your TUM.ai DEV team")
+st.write("This bot is AI-based, we do NOT guarantee for the correctness of its answers - your TUM.ai DEV Team")
 
 initialize_openai_api()
 user_input = st.text_input("Please enter your question here", "")
@@ -167,6 +169,7 @@ else:
     suffix = None
 
 with st.spinner('Thinking about possible answers...'):
+    responses = []
     columns = st.columns(len(sections))
     for section_num, section in enumerate(sections):
         prompt_prefix = section
@@ -175,7 +178,6 @@ with st.spinner('Thinking about possible answers...'):
 
         completion_all = ''
         logprob_values = []
-
 
         with columns[section_num]:
             response_text_field = st.empty()
@@ -191,7 +193,7 @@ with st.spinner('Thinking about possible answers...'):
                 completion_all += completion
                 # print("completion_all:", completion_all)
                 # response_text_field.text(completion_all)
-                response_text_field.markdown(completion_all)
+                #response_text_field.markdown(completion_all)
                 if next_response['choices'][0]['finish_reason']:
                     break
 
@@ -199,6 +201,11 @@ with st.spinner('Thinking about possible answers...'):
             logprob_avg = sum(logprob_values) / len(logprob_values)
             # st.write(f'Average logprob: {logprob_avg}')
             # st.write(f'Certainty: {math.exp(logprob_avg)}')
-            response_text_field.markdown(completion_all + f'\n\nCertainty: {math.exp(logprob_avg)}')
+            #response_text_field.markdown(completion_all + f'\n\nCertainty: {math.exp(logprob_avg)}')
+            responses.append({'completion': completion_all, 'logprob_avg': logprob_avg})
 
         log_response(completion_all)
+max_response = max(responses, key=lambda x: x['logprob_avg'])
+certainty = round(math.exp(max_response["logprob_avg"]) * 100, 4)
+print(max_response['completion'] + f'\n\nCertainty: {math.exp(max_response["logprob_avg"])}')
+st.markdown(max_response['completion'] + f'\n\n_Certainty: {certainty}%_')

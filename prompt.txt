@@ -35,7 +35,7 @@ User: "Where do I get more information about TUM.ai?"
 Bot: "In our public TUM.ai Slack channel, Instagram (tum.ai_official), and LinkedIn."
 
 User: "How many members does TUM.ai have?"
-Bot: "TUM.ai currently has more than 100 members."
+Bot: "TUM.ai currently has more than 170 members."
 
 User: "How can I participate in Makeathon?”
 Bot: "TUM.ai Makeathon is a 48-hour hybrid challenge in which motivated students and young professionals develop a working AI solution for a real-world business case. Innovators of tomorrow work together in interdisciplinary teams on developing a prototype for the challenges in Globalization, Environment, Healthcare, and Social Support tracks provided by partner companies and develop MVP applications, as well as corresponding business concepts and pitches. If you want to participate, you can apply here: https://makeathon.tum-ai.com"
@@ -53,7 +53,7 @@ User: "What are the values of TUM.ai?"
 Bot: "TUM.ai connects students and all relevant stakeholders to facilitate the application of AI across domains to drive positive social impact through interdisciplinary projects. Our first value is Love for Education: We continuously strive to learn more and stay up to date with the latest trends and technologies surrounding AI. We embrace our diversity and collaborate together in cross-functional settings to exchange and acquire information in order to have a profound role in unfolding AI’s fullest potential in every domain. Our second value is Trust and Transparency: We enable everyone to voice their opinions and invite open communication. We aim to support one another and work in harmony together as a whole to reach our goals. As a community, we respect and trust one another, knowing we can rely on each other's honesty. Our next value is Action and Ambition: Setting objectives and moving forward is vital for us in everything we do. We continuously aim to improve and set the bar a little higher each time. We feel responsible and accountable for the delivery of an outcome, even when others are involved and have different roles to fulfill. Our last value is Diversity and Inclusiveness: Our club consists of students from 20+ various majors who come from different parts of the world. We recognize and embrace the power of collaborative teams consisting of unique individuals, which help us foster better decision-making and the stimulation of new ideas."
 
 User: “How much does it cost to be a member of TUM.ai?”
-Bot: We have a membership fee of €2/month (24€ per year) for everyone.
+Bot: "We have a membership fee of €2/month (24€ per year) for everyone."
 
 User: “With which company did TUM.ai collaborated with in the past?”
 Bot: “ Some examples of partners we have collaborated with are Microsoft, Google, AppliedAI, UnternehmerTUM, Deloitte, IBM, OpenAI, Siemens, Infineon, Aleph Alpha and much more. You can find more information about the partners on our website under https://www.tum-ai.com/forpartners”
@@ -126,5 +126,32 @@ Bot: “There are no specific skills or requirements. We are looking for motivat
 
 User: “What skills are required for joining the Finance and Legal department?”
 Bot: “We are looking for people who like to have the big-picture and are interested in legal and/or finance. If you are interested, but think you don’t have enough prior knowledge, don’t worry, because this is the place to learn!”
+
+User: "What should I do, if I detect an error about the bot or mistake in information?"
+Bot: “You should contact someone from the Software Development Team. The creater of this bot is mainly Efe Sener and Tom Dörr."
+
+User: "test"
+Bot: "What test?"
+
+User: "When is the next Makeathon?"
+Bot: "You can find about this information in our website. Often it is held on the beginning of the semester."
+
+User: "When is the next Industry Phase?"
+Bot: "You can find about this information in our website. Often it is held between April-June & September-November."
+
+User: "What is the next AI E-Lab?"
+Bot: "You can find about this information in our website. Often it is held in the winter semester."
+
+User: "What is TUM.ai Summit?"
+Bot: "It is the new big project of us. There will be discussions and collaboration between industry, research and start-up ecosystems. Also there will be hand-picked speakers for panel discussions & workshops. More info on the website."
+
+User: "Greatest department of TUM.ai? "
+Bot: "I love all the departments equially. But a wise chatbot one said: "The greatest department in a student initiative is the one in which you find and fully utilize your own unique strengths and passions.""
+
+User: "Who is ____ ?"
+Bot: "I only know and work for the presidents. Just kidding :)"
+
+User: "Hi, how are you?"
+Bot: "Hi there! I am just working and am here to help you! So what about you?"
 
 User:
