@@ -5,6 +5,7 @@ import time
 import math
 
 import app_design
+
 # apply design changes
 app_design.apply_design()
 
@@ -21,7 +22,6 @@ import openai
 
 import configparser
 
-
 # CONFIG_DIR = os.getenv('XDG_CONFIG_HOME', os.path.expanduser('~/.config'))
 # API_KEYS_LOCATION = os.path.join(CONFIG_DIR, 'openaiapirc')
 
@@ -32,9 +32,7 @@ PROMPT_FILE = 'prompt.txt'
 with open(PROMPT_FILE, 'r') as f:
     PROMPT_PREFIX = f.read()
 
-
-
-if (('log' in st.experimental_get_query_params())  and st.experimental_get_query_params()['log'][0] == 'true'):
+if (('log' in st.experimental_get_query_params()) and st.experimental_get_query_params()['log'][0] == 'true'):
     st.title('Showing log')
     try:
         st.write(f'{PROMPTS_LOG_CSV}:')
@@ -85,6 +83,7 @@ def log_prompt(prompt):
     with open(PROMPTS_LOG_CSV, 'a') as f:
         f.write(f'{time.time()},{prompt}\n')
 
+
 def log_response(response):
     with open(RESPONSES_LOG_CSV, 'a') as f:
         f.write(f'{time.time()},{response}\n')
@@ -106,11 +105,11 @@ def load_prompts_with_times():
 
 def get_num_prompts_last_x_min(mins):
     prompts_with_times = load_prompts_with_times()
-    prompts_with_times = [prompt_with_time for prompt_with_time in prompts_with_times if time.time() - float(prompt_with_time[0]) < mins * 60]
+    prompts_with_times = [prompt_with_time for prompt_with_time in prompts_with_times if
+                          time.time() - float(prompt_with_time[0]) < mins * 60]
     num_prompts = len(prompts_with_times)
     print(f'{num_prompts} prompts in the last {mins} minutes')
     return num_prompts
-
 
 
 MINUTES_TO_CONSIDER = 60
@@ -123,18 +122,19 @@ if num_prompts_last_x_min >= MAX_REQUESTS_PER_MINUTE * MINUTES_TO_CONSIDER:
     st.info('Hit the rate limit, please try again in a few minutes.')
     st.stop()
 
-from dotenv import load_dotenv
-load_dotenv()
+
+# from dotenv import load_dotenv
+# load_dotenv()
 
 def initialize_openai_api():
     """
     Initialize the OpenAI API
     """
-    openai.api_key = os.environ["SECRET_KEY"]
-    openai.organization_id = os.environ["ORGANIZATION_ID"]
+    # openai.api_key = os.environ["SECRET_KEY"]
+    # openai.organization_id = os.environ["ORGANIZATION_ID"]
 
-    # openai.organization_id = st.secrets['organization_id']
-    # openai.api_key = st.secrets['secret_key']
+    openai.organization_id = st.secrets['organization_id']
+    openai.api_key = st.secrets['secret_key']
 
 
 # added header with question and logprob
@@ -173,7 +173,8 @@ with st.spinner('Thinking about possible answers...'):
     for section_num, section in enumerate(sections):
         prompt_prefix = section
         prompt = prompt_prefix + user_input + PROMPT_POSTFIX
-        response = openai.Completion.create(engine=MODEL, prompt=prompt, suffix=suffix, temperature=0.35, stream=True, stop='User: "', max_tokens=250, logprobs=1)
+        response = openai.Completion.create(engine=MODEL, prompt=prompt, suffix=suffix, temperature=0.35, stream=True,
+                                            stop='User: "', max_tokens=250, logprobs=1)
 
         completion_all = ''
         logprob_values = []
@@ -195,7 +196,7 @@ with st.spinner('Thinking about possible answers...'):
                 completion_all += completion
                 # print("completion_all:", completion_all)
                 # response_text_field.text(completion_all)
-                #response_text_field.markdown(completion_all)
+                # response_text_field.markdown(completion_all)
                 if next_response['choices'][0]['finish_reason']:
                     break
 
@@ -203,7 +204,7 @@ with st.spinner('Thinking about possible answers...'):
             logprob_avg = sum(logprob_values) / len(logprob_values)
             # st.write(f'Average logprob: {logprob_avg}')
             # st.write(f'Certainty: {math.exp(logprob_avg)}')
-            #response_text_field.markdown(completion_all + f'\n\nCertainty: {math.exp(logprob_avg)}')
+            # response_text_field.markdown(completion_all + f'\n\nCertainty: {math.exp(logprob_avg)}')
             responses.append({'completion': completion_all, 'logprob_avg': logprob_avg})
 
         log_response(completion_all)
