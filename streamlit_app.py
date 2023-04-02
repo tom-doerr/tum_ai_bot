@@ -8,11 +8,10 @@ import app_design
 # apply design changes
 app_design.apply_design()
 
-PROMPT_PREFIX = '''
-Info: "With over 100 active members, TUM.ai is Germany's leading AI student initiative, located in Munich. 🎓
-Together with our highly talented members, we run projects with industry partners, workshops and so called "Makeathon" product development competitions all around the topic of Artificial Intelligence and Data Analytics. 
-We thrive to deploy AI solutions into new fields and industries! Do not hesitate to reach out to us, we are looking forward to ambitious collaborations. All information is in https://www.tum-ai.com"
-User: "'''
+PROMPT_PREFIX_FOR_ALL = '''
+Info: "I am a highly intelligent question answering bot of student initative TUM.ai. I'll answer all questions in regard to the application process and the key aspects of why you should join us. I will answer the questions based on the context below, and if the question can't be answered based on the context, I'll say 'I don't know'.
+With over 170 active members, TUM.ai is Germany's leading AI student initiative, located in Munich. 🎓
+ "'''
 
 PROMPT_POSTFIX = '''"
 Bot: "'''
@@ -124,18 +123,18 @@ if num_prompts_last_x_min >= MAX_REQUESTS_PER_MINUTE * MINUTES_TO_CONSIDER:
     st.info('Hit the rate limit, please try again in a few minutes.')
     st.stop()
 
-# from dotenv import load_dotenv
-# load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 
 def initialize_openai_api():
     """
     Initialize the OpenAI API
     """
-    # openai.api_key = os.environ["SECRET_KEY"]
-    # openai.organization_id = os.environ["ORGANIZATION_ID"]
+    openai.api_key = os.environ["SECRET_KEY"]
+    openai.organization_id = os.environ["ORGANIZATION_ID"]
 
-    openai.organization_id = st.secrets['organization_id']
-    openai.api_key = st.secrets['secret_key']
+    # openai.organization_id = st.secrets['organization_id']
+    # openai.api_key = st.secrets['secret_key']
 
 
 # added header with question and logprob
@@ -182,7 +181,10 @@ with st.spinner('Thinking about possible answers...'):
         with columns[section_num]:
             response_text_field = st.empty()
             while True:
-                next_response = next(response)
+                try:
+                    next_response = next(response)
+                except StopIteration:
+                    break
                 print("next_response:", next_response)
                 completion = next_response['choices'][0]['text']
                 logprob_values.append(next_response['choices'][0]['logprobs']['token_logprobs'][0])
