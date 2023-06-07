@@ -123,16 +123,20 @@ if num_prompts_last_x_min >= MAX_REQUESTS_PER_MINUTE * MINUTES_TO_CONSIDER:
     st.stop()
 
 
-# from dotenv import load_dotenv
-# load_dotenv()
+
 
 def initialize_openai_api():
     """
     Initialize the OpenAI API
     """
+    # For testing:
+
+    # from dotenv import load_dotenv
+    # load_dotenv()
     # openai.api_key = os.environ["SECRET_KEY"]
     # openai.organization_id = os.environ["ORGANIZATION_ID"]
 
+    # For production:
     openai.organization_id = st.secrets['organization_id']
     openai.api_key = st.secrets['secret_key']
 
@@ -187,13 +191,17 @@ with st.spinner('Thinking about possible answers...'):
                 except StopIteration:
                     break
                 print("next_response:", next_response)
-                completion = next_response['choices'][0]['text']
-                logprob_values.append(next_response['choices'][0]['logprobs']['token_logprobs'][0])
-                if next_response['choices'][0]['finish_reason']:
-                    if completion_all[-1] == '"':
-                        completion_all = completion_all.strip()[:-1]
+                try:
+                    completion = next_response['choices'][0]['text']
+                    logprob_values.append(next_response['choices'][0]['logprobs']['token_logprobs'][0])
+                    if next_response['choices'][0]['finish_reason']:
+                        if completion_all[-1] == '"':
+                            completion_all = completion_all.strip()[:-1]
 
-                completion_all += completion
+                    completion_all += completion
+                except IndexError:
+                    print('IndexError')
+                    break
                 # print("completion_all:", completion_all)
                 # response_text_field.text(completion_all)
                 # response_text_field.markdown(completion_all)
